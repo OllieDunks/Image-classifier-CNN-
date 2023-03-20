@@ -78,14 +78,6 @@ def create_model(my_learning_rate):
     # The neural network which consists of 3 convolution layers,
     # 2 max pooling layers and 1 dropout layer.
 
-    # Current model with
-    # model.add(Conv2D(256, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-    # model.add(MaxPooling2D((2, 2)))
-    # model.add(Conv2D(124, (3, 3), activation='relu'))
-    # model.add(Dropout(rate=0.2))
-    # model.add(MaxPooling2D((2, 2)))
-    # model.add(Conv2D(64, (3, 3), activation='relu'))
-
     # Optimising the model
     model.add(Conv2D(25, (3, 3), activation='relu', input_shape=(28, 28, 1)))
     model.add(MaxPooling2D((2, 2)))
