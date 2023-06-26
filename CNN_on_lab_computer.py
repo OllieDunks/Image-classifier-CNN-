@@ -12,6 +12,8 @@ from tensorflow.python.ops.numpy_ops import np_config
 # Downloading the MNIST dataset into it's training and testing variables.
 (train_X, train_y), (test_X, test_y) = mnist.load_data()
 
+################################ Preprocessing the data ################################################################
+
 # Validation set created from 0 to 9999 from the training data.
 Validation_X = train_X[0:10000]
 Validation_y = train_y[0:10000]
@@ -69,6 +71,7 @@ def printing_numbers():
         plt.imshow(train_X[i], cmap=plt.get_cmap('Greys'))
         plt.show()
 
+##################################### Creating the CNN model ###########################################################
 
 def create_model(my_learning_rate):
     '''Creating the Neural Network link[4]'''
@@ -126,6 +129,8 @@ Validation = (Validation_X, Validation_y)
 # Establish the model's topography.
 my_model = create_model(learning_rate)
 
+################################ Training the model ####################################################################
+
 # Train the model on the training set.
 epochs, hist = train_model(my_model, train_X, train_y,
                            epochs, batch_size, Validation)
@@ -137,6 +142,8 @@ pred = my_model.predict(test_X)
 pred_class = tf.argmax(pred, axis=-1)  # either tf.math.argmax() or tf.argmax will work
 print(str(pred_class))
 
+
+############################# Plotting the results ###################################################################
 confusion_matrix = metrics.confusion_matrix(test_y, pred_class)
 display_labels = [0,1,2,3,4,5,6,7,8,9]
 cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = display_labels)
